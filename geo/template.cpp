@@ -280,11 +280,10 @@ bool properInter(pt a, pt b, pt c, pt d, pt &out) {
 	return false;
 }
 
-/*
-Commented cause doesnt compile
+
 // To create sets of points we need a comparison function
 struct cmpX {
-	bool operator()(pt a, pt b) {
+	bool operator()(const pt &a, const pt &b) const{
 		return make_pair(a.x, a.y) < make_pair(b.x, b.y);
 	}
 };
@@ -302,7 +301,6 @@ set<pt,cmpX> inters(pt a, pt b, pt c, pt d) {
 	if (onSegment(a,b,d)) s.insert(d);
 	return s;
 }
-*/
 
 double segPoint(pt a, pt b, pt p) {
 	// Dist of point p to segment [a, b]
