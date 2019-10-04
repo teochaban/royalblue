@@ -182,6 +182,7 @@ struct line {
 	T side(pt p);
 	double dist(pt p);
 	double sqDist(pt p);
+	double slope();
 	line perpThrough(pt p);
 	bool cmpProj(pt p, pt q);
 	line translate(pt t);
@@ -205,6 +206,10 @@ double line::dist(pt p) {
 double line::sqDist(pt p) {
 	// Dist point -> line squared.
 	return side(p)*side(p) / (double)sq(v);
+}
+
+double line::slope(){
+	return v.y/v.x;
 }
 
 line line::perpThrough(pt p) {
