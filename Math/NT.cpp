@@ -39,16 +39,34 @@ pair<ll, pair<ll, ll>> ex_gcd(ll a, ll b) {
 	return {a, {ca[0], cb[0]}};
 }
 
+// O(n.lg(n))
+int phi[1000];
+void calcPhiUpTo(int n){
+	for (int i = 1; i <= n; i++) phi[i] = i;
+	for (int i = 1; i <= n; i++)
+		for (int j = i+i; j <= n; j += i)
+			phi[j] -= phi[i];
+}
+
+// O(sqrt(n))
+ll calcPhi(ll n) {
+	ll ret = n;
+
+	vector<ll> ps;
+	for (ll i = 2; i * i <= n; i++)
+		if (n % i == 0){
+			ps.push_back(i);
+			while (n%i==0)
+				n /= i;
+		}
+	if (n > 1)
+		ps.push_back(n);
+
+	for (ll p: ps)
+		ret /= p, ret *= (p-1);
+	return ret;
+}
+
 int main() {
-	/*
-	mt19937 rrand(time(NULL));
-	ll ff = 1e18;
-	for (int i = 0; i < 100000; i++){
-		ll a = rrand() % ff;
-		ll b = rrand() % ff;
-		auto g = ex_gcd(a, b);
-		cout << g.F << endl;
-		assert(g.S.F*a + g.S.S*b == g.F);
-	}*/
 	return 0;
 }
