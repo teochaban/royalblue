@@ -423,6 +423,33 @@ int tangents(pt o1, double r1, pt o2, double r2, bool inner, vector<pair<pt,pt>>
 	return 1 + (h2 > 0);
 }
 
+pt minEnclosingCircle(vector<pt>v){
+	// Given a bunch of points, what is the smallest circle that contains all of them?
+	// Return center.
+	pt p = {0, 0};
+	for(int i=0; i<v.size(); i++){
+		p+=v[i];
+	}
+	if(v.size() == 0)return p;
+	p/=v.size();
+	double walk = 0.1;
+	double d;
+	for(int i=0; i<30000; i++){
+		int k = 0;
+		d = abs(p-v[0]);
+		for(int j=1; j<v.size(); j++){
+			if(abs(p-v[j]) > d){
+				d = abs(p-v[j]);
+				k = j;
+			}
+		}
+		p += (v[k] - p)*walk;
+		walk *= 0.999;
+	}
+	// d is the radius
+	return p;
+}
+
 
 int main(int argc, char const *argv[]){
 	pt p = {3.4, 2.1};
