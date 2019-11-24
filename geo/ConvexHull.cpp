@@ -1,5 +1,7 @@
+bool cmp(pt a, pt b){return mk(a.y, a.x) < mk(b.y, b.x);}
+
 vector<pt> convexhull(vector<pt> p){	//counterclockwise, no collinear points
-	sort(p.begin(), p.end());
+	sort(p.begin(), p.end(), cmp);
 	p.erase(unique(p.begin(), p.end()), p.end());
 	vector<pt> up, dn;
 	for(pt i : p){
