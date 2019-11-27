@@ -67,6 +67,49 @@ ll calcPhi(ll n) {
 	return ret;
 }
 
+// a^b (mod MOD)
+ll pw(ll a, ll b, ll MOD){
+	ll ret = 1;
+	while (b){
+		if (b & 1)
+			ret = ret*a % MOD;
+		b >>= 1;
+		a = a*a % MOD;
+	}
+	return ret;
+}
+
+// PreCondition: __gcd(a, n) == 1
+// O(sqrt(n))
+ll invPhi(ll a, ll n){
+	return pw(a, calcPhi(n)-1, n);
+}
+
+// PreCondition: __gcd(a, n) == 1
+// O(lg(n))
+ll invExtended(ll a, ll n){
+	auto x = ex_gcd(a, n);
+	return (x.S.F%n + n) % n;
+}
+
+// a*x = b (mod n)
+// PreCondition: 0 <= a, b < n
+// Returns the smallest answer or -1 if no answer exists.
+ll linCong(ll a, ll b, ll n, bool fl = false){
+	if (b == 0)
+		return 0ll;
+
+	ll g = __gcd(a, n);
+	if (b % g)
+		return -1;
+
+	a /= g, b /= g, n /= g;
+	return b*(!fl? invPhi(a, n): invExtended(a, n))%n;
+}
+
 int main() {
+	ll a, b, n; cin >> a >> b >> n;
+	cout << linCong(a, b, n) << "\n";
+	cout << linCong(a, b, n, true) << "\n";
 	return 0;
 }
