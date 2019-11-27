@@ -1,3 +1,7 @@
+// Ukkonen's algorithm
+// Copied from Emaxx
+// Constructs a suffix tree in O(|S|)
+
 #include<bits/stdc++.h>
 
 using namespace std;
