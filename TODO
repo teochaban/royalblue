@@ -1,3 +1,34 @@
+TODO:
+remove djiktras
+replace NT
+remove suffix array and suffix tree
+Add:
+  algo
+      AP_bridges
+      SCC_tarjans
+      binaryliftlca 
+      centroiddecomposition
+      djikstra
+      findcicles
+      matrixpower (maybe? find victor's)
+      segtreeiterative
+      segtreeRSQ ( + RMQ if there is space)
+      
+  math
+    miller rabin (if there is space)
+    fft (if we figure out how to use it)
+    math.txt
+    tricks
+ strings
+    kmp
+    z
+    
+      
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+
 Algos to be added:
 
 Up for grabs:
