@@ -1,0 +1,25 @@
+all: 
+ g++ -std=c++17 $(f).cpp -o $(f) -O2
+
+
+
+# TO DEBUG USE THIS:
+
+all:
+	./gen > outGen
+	cat outGen
+	./a < outGen > outTest
+	cat outTest
+	./tester < outTest
+	make all
+
+srand(time(NULL)) 
+mt19937 rrand(time(NULL));	// Better than srand\rand()
+rrand() % WHATEVER // to get the value
+
+clock_t delay = SECONDS * CLOCKS_PER_SEC; // convert seconds to clock ticks
+clock_t start = clock(); // get starting clock ticks
+while((clock() - start) < delay){}
+
+random_shuffle(all(v)) // Dont forget to srand()!!
+shuffle(v.begin(), v.end(), rrand) // this is better than random_shuffle!!!!!

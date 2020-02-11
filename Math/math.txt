@@ -1,0 +1,15 @@
+Picks theorem
+Given a certain lattice polygon with non-zero area.
+
+We denote its area by S, the number of points with integer coordinates lying strictly inside the polygon by I and the number of points lying on polygon sides by B.
+
+Then, the Pick's formula states:
+
+S=I+B/2−1
+
+
+Burnsides Lemma
+Let G be the finite group of operations we can perform on X
+The number of orbits of X is the average of the number of fixed points for each g in G
+G must be closed
+
