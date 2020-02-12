@@ -1,3 +1,4 @@
+/*
 Picks theorem
 Given a certain lattice polygon with non-zero area.
 
@@ -51,8 +52,4 @@ However, the main definition is the following.
 
 \sum_{d|n} \mu (d) = 0 for all n>1, and \mu (n) is multiplicative.
 (A function f is multiplicative if f(mn)=f(m)f(n) for all (m,n)=1.)
-
-Enumberating submasks in O(3^n)
-for (int m=0; m<(1<<n); ++m)
-    for (int s=m; s; s=(s-1)&m)
- ... s and m ...
+*/
