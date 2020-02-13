@@ -1,3 +1,4 @@
+/*
 Picks theorem
 Given a certain lattice polygon with non-zero area.
 
@@ -72,3 +73,4 @@ The number of monotonic lattice paths from point (0,0) to point (n,n) in a squar
 Number of permutations of length n that can be stack sorted (i.e. it can be shown that the rearrangement is stack sorted if and only if there is no such index i<j<k, such that ak<ai<aj ).
 The number of non-crossing partitions of a set of n elements.
 The number of ways to cover the ladder 1…n using n rectangles (The ladder consists of n columns, where ith column has a height i).
+*/
