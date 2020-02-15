@@ -13,6 +13,7 @@ const int MAXE = 1e4 + 10;
 
 int from[MAXE], to[MAXE], cap[MAXE], ww[MAXE], prv[MAXE], head[MAXN], ec;
 
+//edge from u to v, capacity uv, cost w, vu is backwards capacity(not necessary)
 void addEdge(int u, int v, int uv, int w, int vu = 0){
 	from[ec] = u, to[ec] = v, cap[ec] = uv, ww[ec] = w, prv[ec] = head[u], head[u] = ec++;
 	from[ec] = v, to[ec] = u, cap[ec] = vu, ww[ec] = -w, prv[ec] = head[v], head[v] = ec++;
@@ -60,6 +61,7 @@ pii spfa(int source, int sink) {
 	return {rec[sink], totW};
 }
 
+//returns (flow, cost)
 pii getMCMF(int source, int sink){
 	pii ret(0, 0), x;
 	while (true){
@@ -72,6 +74,8 @@ pii getMCMF(int source, int sink){
 }
 
 int main(){
+	//only need to initialize these
 	memset(head, -1, sizeof(head));
+	ec = 0;
 	return 0;
 }
