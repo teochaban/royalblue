@@ -9,8 +9,25 @@ typedef pair<int, int> pii;
 #define F first
 #define S second
 
-const int MAXN = 1e5 + 10;
-const int LOG = 18;
+const int MAXN = 1e6 + 10;
+const int LOG = 21;
+
+/*
+	rank[i][j] = position of lex smallest (not continuous) string of len 2^i starting in position j
+	2^i = len of string, j = starting position
+	
+	sa[i] = index where it starts
+	i = ith smallest suffix
+	
+	lc[i] = longest common prefix between i, i+1 smallest suffix
+	Note: This is not the ith guy, but the ith smallest guy. 
+	
+	call lcp(i, j) to get the longest common prefix between the suffix starting
+	in i and the suffix starting in j
+	O(nlogn)
+*/
+
+// IMPORTANT: See if need to change to long long!
 
 string s;
 int rank[LOG][MAXN], n, lg;
@@ -57,8 +74,8 @@ void build() {
 				sec[i] = {{rank[w-1][i], -1}, i};
 			else
 				sec[i] = {{rank[w-1][i], rank[w-1][i+(1<<w-1)]}, i};
-		//sort(sec, sec + n);
-		srt();
+		//sort(sec, sec + n); This makes the code n*log^2, faster to code.
+		srt();	// Comment this if using above code
 
 		rank[w][sec[0].S] = 0;
 		for (int i = 1; i < n; i++)
