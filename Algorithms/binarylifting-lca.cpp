@@ -13,7 +13,7 @@ int dfs(int x, int d, int p){
 	depth[x] = d;
 	s[x] = 1;
 	anc[x][0] = p;
-	for(int i = 1; pow(2, i) <= d; i++){
+	for(int i = 1; (1 << i) <= d; i++){
 		anc[x][i] = anc[anc[x][i - 1]][i - 1];
 	}
 	for(int i = 0; i < g[x].size(); i++){
@@ -31,19 +31,16 @@ int walk(int x, int d){
 		d /= 2;
 		i++;
 	}
-	//cout << "\n";
 	return x;
 }
 
 int lca(int x, int y){
-	//cout << x<<y;
-
 	if(depth[x] < depth[y]) y = walk(y, depth[y] - depth[x]);
 	if(depth[x] > depth[y]) x = walk(x, depth[x] - depth[y]);
 	//cout << x<<y;
 	if(x == y) return x;
 	for(int i = 30; i >= 0; i--){
-		if(depth[x] >= pow(2, i) && anc[x][i] != anc[y][i]){
+		if(depth[x] >= (1 << i) && anc[x][i] != anc[y][i]){
 			return lca(anc[x][i], anc[y][i]);
 		}
 	}
