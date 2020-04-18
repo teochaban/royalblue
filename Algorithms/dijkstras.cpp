@@ -1,18 +1,22 @@
-vector<ll> dijkstra(vector<vector<pii>> &G, int v) {
-    vector<ll> ans(G.size() + 1, inf);
-    ans[v] = 0;
-    auto cmp = [&](int i, int j) { return ans[i] > ans[j]; };
-    priority_queue<int, vector<int>, decltype(cmp)> q(cmp);
-    q.push(v);
-    while(!q.empty()) {
-        auto f = q.top();
+vector<pii> g[MAXN];
+ll dist[MAXN];
+bool vis[MAXN];
+
+void dijkstra(int x){
+    fill(dist, dist + MAXN, inf);
+    priority_queue<pii, vector<pii>, greater<pii>> q;
+    q.push({0, x});
+    dist[x] = 0;
+    while(!q.empty()){
+        pii v = q.top();
         q.pop();
-        for(auto i : G[f]){
-            if (ans[i.fi] > ans[f] + i.se){
-            	ans[i.fi] = ans[f] + i.se;
-                q.push(i.fi);
+        if(vis[v.se]) continue;
+        vis[v.se] = true;
+        for(pii u : g[v.se]){
+            if(dist[v.se] + u.se < dist[u.fi]){
+                dist[u.fi] = dist[v.se] + u.se;
+                q.push({dist[u.fi], u.fi});
             }
         }
     }
-    return ans;
 }
